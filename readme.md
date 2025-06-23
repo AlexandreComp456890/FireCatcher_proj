@@ -25,8 +25,37 @@ Você pode executar o projeto de duas formas:
 3. Faça o processo da **Opção 1** do passo 4 ao 6.
 
 
-## Como Simular (PicSimLab)
+## 🖥️ Como Simular (PicSimLab)
 
 Esse projeto pode ser simulado no PicSimLab da seguinte maneira: 
 
 <img src="assets/simulaçãoFireCatcher.png" alt="Simulação" width="1000"/>
+
+#### Dispositivos:
+
+- **Inputs:**
+
+    - LM35 (Sensor de Temperatura):
+        - 2-OUT => RA2 (AN2).
+    - LDR (Fotoresistencia):
+        - 2-D0 => NC (sem conexão);
+        - 3-A0 => RA5 (AN4).
+    - DHT11 (Sensor de umidade):
+        - 2-D => RA4.
+
+- **Outputs:**
+
+    - Display LCD 16x2:
+        - 4-RS => RD1;
+        - 5-RW => GND;
+        - 6-EN => RD7;
+        - 7-D0 => RB0;
+        - 8-D1 => RB1;
+        - 9-D2 => RB2;
+        - 10-D3 => RB3;
+        - 11-D4 => RB4;
+        - 12-D5 => RB5;
+        - 13-D6 => RB6;
+        - 14-D7 => RB7.
+    - Buzzer (Ativo):
+        - RC2 (PWM).
