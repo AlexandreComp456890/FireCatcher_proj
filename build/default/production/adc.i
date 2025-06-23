@@ -4812,37 +4812,33 @@ float ADC_read_temp(unsigned int value);
 
 void ADC_init(void){
 
-    TRISA = 0b00001100;
+    TRISA = 0b11111111;
 
 
-    ADCON0bits.CHS = 0b000;
-    ADCON0bits.ADON = 1;
+    ADCON0 = 0b00001101;
 
 
-    ADCON1 = 0b00001100;
+    ADCON1 = 0b00000000;
 
-
-    ADCON2bits.ADFM = 1;
-    ADCON2bits.ACQT = 0b001;
-    ADCON2bits.ADCS = 0b000;
+    ADCON2 = 0b10111010;
 }
 
-unsigned int ADC_read(unsigned char channel){
-    if (channel > 13) return 0;
+unsigned int ADC_read(unsigned char channel) {
+    if (channel > 12) return 0;
 
-    ADCON0 &= 0xC5;
-    ADCON0 |= channel << 2;
-    _delay((unsigned long)((5)*(8000000/4000000.0)));
 
-    GO_DONE = 1;
-    while (GO_DONE);
+    ADCON0 &= 0b00000011;
+    ADCON0 |= (channel << 2);
 
-    return (unsigned int)((ADRESH << 8) + ADRESL);
+    ADCON0bits.GODONE = 1;
+    while (ADCON0bits.GODONE);
+
+    return (unsigned int)((ADRESH << 8) | ADRESL);
 }
 
 float ADC_read_lumi(unsigned int value){
 
-    return (value * 5.0) / 1023.0;
+    return (value * 5.0 / 1023.0);
 }
 
 float ADC_read_temp(unsigned int value){

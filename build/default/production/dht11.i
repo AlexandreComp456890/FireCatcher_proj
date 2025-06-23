@@ -4797,116 +4797,41 @@ unsigned char __t3rd16on(void);
 
 
 
-typedef struct {
-    unsigned char humidity_int;
-    unsigned char humidity_dec;
-    unsigned char temperature_int;
-    unsigned char temperature_dec;
-    unsigned char checksum;
-} DHT11_Data;
 
-
-unsigned char DHT11_read(DHT11_Data *data);
+char DHT11_ReadData(void);
+void DHT11_Init(void);
 # 2 "dht11.c" 2
 # 1 "./config.h" 1
 # 3 "dht11.c" 2
 
 
-
-
-unsigned char DHT11_read_bit(void) {
-    unsigned char timeout = 0;
-
-    while (PORTCbits.RC0 == 0 && timeout < 100) {
-        _delay((unsigned long)((1)*(8000000/4000000.0)));
-        timeout++;
+char DHT11_ReadData(void){
+  char i,data = 0;
+    for(i=0;i<8;i++)
+    {
+        while(!(PORTAbits.RA4 & 1));
+        _delay((unsigned long)((30)*(8000000/4000000.0)));
+        if(PORTAbits.RA4 & 1)
+          data = (char)(((data)<<1) | 1);
+        else
+          data = (char)((data)<<1);
+        while(PORTAbits.RA4 & 1);
     }
-    timeout = 0;
-
-    while (PORTCbits.RC0 == 1 && timeout < 100) {
-        _delay((unsigned long)((1)*(8000000/4000000.0)));
-        timeout++;
-    }
-
-    _delay((unsigned long)((40)*(8000000/4000000.0)));
-    if (PORTCbits.RC0 == 1) {
-
-        timeout = 0;
-        while (PORTCbits.RC0 == 1 && timeout < 100) {
-            _delay((unsigned long)((1)*(8000000/4000000.0)));
-            timeout++;
-        }
-        return 1;
-    } else {
-        return 0;
-    }
+  return data;
 }
 
-
-unsigned char DHT11_read_byte(void) {
-    unsigned char i, byte = 0;
-    for (i = 0; i < 8; i++) {
-        if (DHT11_read_bit()) {
-            byte |= (1 << (7 - i));
-        }
-    }
-    return byte;
+void DHT11_CheckResponse(void){
+    while(PORTAbits.RA4 & 1);
+    while(!(PORTAbits.RA4 & 1));
+    while(PORTAbits.RA4 & 1);
 }
 
-
-unsigned char DHT11_read(DHT11_Data *data) {
-    unsigned char timeout = 0;
-    unsigned char buffer[5];
-    unsigned char checksum;
-
-
-    TRISCbits.TRISC0 = 0;
-    PORTCbits.RC0 = 0;
+void DHT11_Init(void){
+    TRISAbits.RA4 = 0;
+    LATAbits.LATA4 = 0;
     _delay((unsigned long)((18)*(8000000/4000.0)));
-    PORTCbits.RC0 = 1;
-    _delay((unsigned long)((30)*(8000000/4000000.0)));
-    TRISCbits.TRISC0 = 1;
-
-
-
-    timeout = 0;
-    while (PORTCbits.RC0 == 1 && timeout < 100) {
-        _delay((unsigned long)((1)*(8000000/4000000.0)));
-        timeout++;
-    }
-    if (timeout >= 100) return 0;
-
-
-    timeout = 0;
-    while (PORTCbits.RC0 == 0 && timeout < 100) {
-        _delay((unsigned long)((1)*(8000000/4000000.0)));
-        timeout++;
-    }
-    if (timeout >= 100) return 0;
-
-
-    timeout = 0;
-    while (PORTCbits.RC0 == 1 && timeout < 100) {
-        _delay((unsigned long)((1)*(8000000/4000000.0)));
-        timeout++;
-    }
-    if (timeout >= 100) return 0;
-
-
-    for (unsigned char i = 0; i < 5; i++) {
-        buffer[i] = DHT11_read_byte();
-    }
-
-
-    checksum = buffer[0] + buffer[1] + buffer[2] + buffer[3];
-    if (checksum == buffer[4]) {
-        data->humidity_int = buffer[0];
-        data->humidity_dec = buffer[1];
-        data->temperature_int = buffer[2];
-        data->temperature_dec = buffer[3];
-        data->checksum = buffer[4];
-        return 1;
-    } else {
-        return 0;
-    }
+    LATAbits.LATA4 = 1;
+    _delay((unsigned long)((20)*(8000000/4000000.0)));
+    TRISAbits.RA4 = 1;
+    DHT11_CheckResponse();
 }

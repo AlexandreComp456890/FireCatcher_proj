@@ -5087,8 +5087,6 @@ float ADC_read_temp(unsigned int value);
 
 
 void lcd_init(void);
-void lcd_cmd(unsigned char);
-void lcd_data(unsigned char);
 void lcd_string(const char*);
 void lcd_set_cursor(unsigned char row, unsigned char col);
 void lcd_clear(void);
@@ -5104,52 +5102,163 @@ void lcd_clear(void);
 void PWM_init(void);
 void PWM_control(int value);
 # 73 "main.c" 2
+# 1 "./dht11.h" 1
+# 12 "./dht11.h"
+char DHT11_ReadData(void);
+void DHT11_Init(void);
+# 74 "main.c" 2
 
 
+# 1 "./config.h" 1
+# 77 "main.c" 2
 
+
+unsigned int flag_analog_value = 0;
+unsigned int flow = 0;
+unsigned int timer;
+
+unsigned int ldr_raw_value, lm35_raw_value;
+float ldr_value, lm35_value;
 
 void main() {
-    unsigned int ldr_raw_value, lm35_raw_value;
-    float ldr_voltage, lm35_value;
-    unsigned int pwm_duty_cycle;
+
+    int pwm_duty_cycle;
+
+    char RH_Decimal,RH_Integral,T_Decimal,T_Integral;
+    char Checksum;
+
+
     char buffer[16];
 
     OSCCON = 0b01110111;
+    do { INTCONbits.GIE = 1; INTCONbits.PEIE = 1; INTCONbits.TMR0IE = 1; INTCONbits.TMR0IF = 0; PIE1bits.ADIE = 1; PIR1bits.ADIF = 0; } while (0);
+
+    TMR0H = 0xF0;
+    TMR0L = 0xBE;
+    T0CON = 0b10000111;;
 
     ADC_init();
     PWM_init();
     lcd_init();
 
-    lcd_set_cursor(0, 0);
-    lcd_string("Iniciando...");
-    _delay((unsigned long)((1000)*(8000000/4000.0)));
+    lcd_set_cursor(0, 2);
+    lcd_string("Iniciando");
+    for (unsigned char i = 11; i < 14; i++){
+        lcd_set_cursor(0, i);
+        lcd_string(".");
+        _delay((unsigned long)((500)*(8000000/4000.0)));
+    }
 
     while(1){
+        lcd_clear();
+
+        if (flow == 0){
+
+            lcd_set_cursor(0,2);
+            lcd_string("LM35 and LDR");
+            _delay((unsigned long)((1000)*(8000000/4000.0)));
+            lcd_clear();
 
 
+            if (flag_analog_value == 0){
+                lm35_raw_value = ADC_read(2);
+                lm35_value = ADC_read_temp(lm35_raw_value);
+
+                lcd_set_cursor(0, 0);
+                sprintf(buffer, "LM35: %.2f\xB0"" C ", lm35_value);
+                lcd_string(buffer);
+            }
 
 
-        lm35_raw_value = ADC_read(2);
-        lm35_value = ADC_read_temp(lm35_raw_value);
+            if (flag_analog_value == 1){
+                ldr_raw_value = ADC_read(4);
+                ldr_value = ADC_read_lumi(ldr_raw_value);
+
+                lcd_set_cursor(1, 0);
+                if (ldr_value <= 1.5) lcd_string("-------Ok-------");
+                else if(ldr_value > 1.5 && ldr_value < 3.0) lcd_string("----Atencao!----");
+                else lcd_string("****!Perigo!****");
+            }
+
+        }else{
+
+            DHT11_Init();
+
+            RH_Integral = DHT11_ReadData();
+            RH_Decimal = DHT11_ReadData();
+            T_Integral = DHT11_ReadData();
+            T_Decimal = DHT11_ReadData();
+            Checksum = DHT11_ReadData();
+
+            lcd_set_cursor(0,2);
+            lcd_string("DHT11 Values");
+            _delay((unsigned long)((1000)*(8000000/4000.0)));
+            lcd_clear();
 
 
+            lcd_set_cursor(0,0);
+            sprintf(buffer,"DHT11 Hum: %d.%d",RH_Integral, RH_Decimal);
+            lcd_string(buffer);
 
-        pwm_duty_cycle = ldr_raw_value;
 
-
-        if (pwm_duty_cycle > 1023) {
-            pwm_duty_cycle = 1023;
-        } else if (pwm_duty_cycle < 0) {
-            pwm_duty_cycle = 0;
+            lcd_set_cursor(1,0);
+            sprintf(buffer,"DHT11 Tem: %d.%d",T_Integral, T_Decimal);
+            lcd_string(buffer);
         }
 
-        PWM_control(pwm_duty_cycle);
-# 123 "main.c"
-        lcd_set_cursor(1, 0);
-        lcd_string("TEM: ");
-        sprintf(buffer, "%.2f", lm35_value);
-        lcd_string(buffer);
 
-        _delay((unsigned long)((200)*(8000000/4000.0)));
+        if ((lm35_value >= 85.0 && ldr_value > 3.0)) {
+            int up = 1;
+            pwm_duty_cycle = 0;
+
+            while (1) {
+
+                lm35_raw_value = ADC_read(2);
+                lm35_value = ADC_read_temp(lm35_raw_value);
+
+                ldr_raw_value = ADC_read(4);
+                ldr_value = ADC_read_lumi(ldr_raw_value);
+
+
+                if (lm35_value < 60.0 || ldr_value <= 2.5) break;
+
+
+                PWM_control(pwm_duty_cycle);
+
+                if (up) {
+                    pwm_duty_cycle++;
+                    if (pwm_duty_cycle >= 1023)
+                        up = 0;
+                } else {
+                    pwm_duty_cycle--;
+                    if (pwm_duty_cycle <= 0)
+                        up = 1;
+                }
+
+                _delay((unsigned long)((5)*(8000000/4000.0)));
+            }
+        }else PWM_control(0);
+
+        _delay((unsigned long)((2000)*(8000000/4000.0)));
+    }
+    return;
+}
+
+void __attribute__((picinterrupt(("")))) isr(void){
+
+    if(PIR1bits.ADIF){
+        PIR1bits.ADIF = 0;
+        flag_analog_value = !flag_analog_value;
+    }
+
+    if (INTCONbits.TMR0IF){
+        INTCONbits.TMR0IF = 0;
+        TMR0H = 0xF0;
+        TMR0L = 0xBE;
+        timer++;
+        if (timer >= 6){
+            timer = 0;
+            flow = !flow;
+        }
     }
 }

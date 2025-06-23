@@ -70,61 +70,158 @@
 #include "adc.h"
 #include "lcd.h"
 #include "pwm.h"
-// Define _XTAL_FREQ se não estiver definido em config.h
-#define _XTAL_FREQ 8000000
+#include "dht11.h"
 
+// Define _XTAL_FREQ se não estiver definido em config.h
+#include "config.h"
+
+//Variaveis de controle
+unsigned int flag_analog_value = 0;
+unsigned int flow = 0;
+unsigned int timer;
+//LM35 e LDR
+unsigned int ldr_raw_value, lm35_raw_value;
+float ldr_value, lm35_value;
 
 void main() {
-    unsigned int ldr_raw_value, lm35_raw_value;
-    float ldr_voltage, lm35_value;
-    unsigned int pwm_duty_cycle;
+    //PWM
+    int pwm_duty_cycle;
+    //DHT11
+    char RH_Decimal,RH_Integral,T_Decimal,T_Integral;
+    char Checksum;
+    
+    
     char buffer[16];
-
+    
     OSCCON = 0b01110111; // Configura o oscilador interno para 8MHz
-
+    INIT_INTERRUPTS();
+    
+    TMR0H = 0xF0; // High byte of (65536 - 3906)
+    TMR0L = 0xBE; // Low byte of (65536 - 3906)
+    T0CON = 0b10000111;; // Timer0 config
+    
     ADC_init(); // Inicializa o ADC
     PWM_init(); // Inicializa o PWM
     lcd_init(); // Inicializa o LCD
 
-    lcd_set_cursor(0, 0);
-    lcd_string("Iniciando...");
-    __delay_ms(1000);
+    lcd_set_cursor(0, 2);
+    lcd_string("Iniciando");
+    for (unsigned char i = 11; i < 14; i++){
+        lcd_set_cursor(0, i);
+        lcd_string(".");
+        __delay_ms(500);
+    }
 
     while(1){
-        // Leitura do LDR (conectado em AN3 / RA3)
-//        ldr_raw_value = ADC_read(3);
-//        ldr_voltage = ADC_read_lumi(ldr_raw_value);
-        
-        lm35_raw_value = ADC_read(2);
-        lm35_value = ADC_read_temp(lm35_raw_value);
+        lcd_clear();
 
-        // Mapeia o valor do LDR para o ciclo de trabalho do PWM
-        // Exemplo: mais luz = mais PWM
-        pwm_duty_cycle = ldr_raw_value;
+        if (flow == 0){
+            // === Abertura ===
+            lcd_set_cursor(0,2);
+            lcd_string("LM35 and LDR");
+            __delay_ms(1000);
+            lcd_clear();
 
-        // Limita o valor do PWM para o máximo (1023 para 10-bit)
-        if (pwm_duty_cycle > 1023) {
-            pwm_duty_cycle = 1023;
-        } else if (pwm_duty_cycle < 0) { // Garante que não seja negativo, embora ldr_raw_value seja unsigned
-            pwm_duty_cycle = 0;
+            // === Leitura do LM35 (AN2) ===
+            if (flag_analog_value == 0){
+                lm35_raw_value = ADC_read(2); // RA2
+                lm35_value = ADC_read_temp(lm35_raw_value); // em °C
+                // === Exibe no LCD LM35 ===
+                lcd_set_cursor(0, 0);
+                sprintf(buffer, "LM35: %.2f\xB0"" C ", lm35_value);
+                lcd_string(buffer);
+            }
+
+            // === Leitura do LDR (AN3) ===
+            if (flag_analog_value == 1){
+                ldr_raw_value = ADC_read(4); // RA3, mudar para RA4 na simulação (simulador defeituoso) 
+                ldr_value = ADC_read_lumi(ldr_raw_value); // em Volts (ou proporção) 
+                // === Exibe no LCD LDR ===
+                lcd_set_cursor(1, 0);
+                if (ldr_value <= 1.5) lcd_string("-------Ok-------");
+                else if(ldr_value > 1.5 && ldr_value < 3.0) lcd_string("----Atencao!----");
+                else lcd_string("****!Perigo!****");
+            }
+            
+        }else{
+            // === Iniciando e pegando as informações do DHT11 ===
+            DHT11_Init();
+
+            RH_Integral = DHT11_ReadData();  // Valor inteiro da umidade
+            RH_Decimal = DHT11_ReadData();   // Valor decimal da umidade
+            T_Integral = DHT11_ReadData();   // Valor inteiro da temperatura
+            T_Decimal = DHT11_ReadData();    // Valor decimal da temperatura
+            Checksum = DHT11_ReadData();     // Soma dos valores digitais 
+
+            lcd_set_cursor(0,2);
+            lcd_string("DHT11 Values");
+            __delay_ms(1000);
+            lcd_clear();
+
+            // === Informações da umidade para o LCD ===
+            lcd_set_cursor(0,0);
+            sprintf(buffer,"DHT11 Hum: %d.%d",RH_Integral, RH_Decimal);
+            lcd_string(buffer);
+
+            // === Informações da temperatura para o LCD ===
+            lcd_set_cursor(1,0);
+            sprintf(buffer,"DHT11 Tem: %d.%d",T_Integral, T_Decimal);
+            lcd_string(buffer);
         }
-
-        PWM_control(pwm_duty_cycle); // Aplica o ciclo de trabalho ao PWM
-
-        // Exibe LDR e PWM no LCD
         
-        // Linha 1: LDR
-//        lcd_set_cursor(0, 0);
-//        lcd_string("LDR: ");
-//        sprintf(buffer, "%.2fV", ldr_voltage);
-//        lcd_string(buffer);
+        // === Sinal de emergencia ===
+        if ((lm35_value >= 85.0 && ldr_value > 3.0)) {
+            int up = 1;
+            pwm_duty_cycle = 0;
 
-        // Linha 2: PWM
-        lcd_set_cursor(1, 0);
-        lcd_string("TEM: ");
-        sprintf(buffer, "%.2f", lm35_value);
-        lcd_string(buffer);
+            while (1) {
+                // === Update sensor values ===
+                lm35_raw_value = ADC_read(2);
+                lm35_value = ADC_read_temp(lm35_raw_value);
 
-        __delay_ms(200); // Atraso para facilitar a leitura no display
+                ldr_raw_value = ADC_read(4);
+                ldr_value = ADC_read_lumi(ldr_raw_value);
+                
+                // === Saída do loop ===
+                if (lm35_value < 60.0 || ldr_value <= 2.5) break;
+                
+                // === Sirene com buzzer ===
+                PWM_control(pwm_duty_cycle);
+                
+                if (up) {
+                    pwm_duty_cycle++;
+                    if (pwm_duty_cycle >= 1023)
+                        up = 0;
+                } else {
+                    pwm_duty_cycle--;
+                    if (pwm_duty_cycle <= 0)
+                        up = 1;
+                }
+
+                __delay_ms(5);
+            }
+        }else PWM_control(0);
+
+        __delay_ms(2000);
+    }
+    return;
+}
+
+void __interrupt() isr(void){
+    //Se flag ADIF==1 conversão A/D foi finalizada
+    if(PIR1bits.ADIF){
+        PIR1bits.ADIF = 0;
+        flag_analog_value = !flag_analog_value;
+    }
+    
+    if (INTCONbits.TMR0IF){
+        INTCONbits.TMR0IF = 0;
+        TMR0H = 0xF0; // High byte of (65536 - 3906)
+        TMR0L = 0xBE; // Low byte of (65536 - 3906)
+        timer++;
+        if (timer >= 6){
+            timer = 0;
+            flow = !flow;
+        }
     }
 }

@@ -1,54 +1,81 @@
 Version 4.0 HI-TECH Software Intermediate Code
+"56 C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8\pic\include\proc/pic18f4520.h
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8\pic\include\proc/pic18f4520.h: 56:     struct {
+[s S7 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S7 . RA0 RA1 RA2 RA3 RA4 RA5 RA6 RA7 ]
+"66
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8\pic\include\proc/pic18f4520.h: 66:     struct {
+[s S8 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S8 . AN0 AN1 AN2 AN3 T0CKI AN4 OSC2 OSC1 ]
+"76
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8\pic\include\proc/pic18f4520.h: 76:     struct {
+[s S9 :2 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S9 . . VREFN VREFP . SS CLKO CLKI ]
+"85
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8\pic\include\proc/pic18f4520.h: 85:     struct {
+[s S10 :5 `uc 1 :1 `uc 1 ]
+[n S10 . . NOT_SS ]
+"89
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8\pic\include\proc/pic18f4520.h: 89:     struct {
+[s S11 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
+[n S11 . . CVREF . nSS ]
+"95
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8\pic\include\proc/pic18f4520.h: 95:     struct {
+[s S12 :5 `uc 1 :1 `uc 1 ]
+[n S12 . . LVDIN ]
+"99
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8\pic\include\proc/pic18f4520.h: 99:     struct {
+[s S13 :5 `uc 1 :1 `uc 1 ]
+[n S13 . . HLVDIN ]
+"103
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8\pic\include\proc/pic18f4520.h: 103:     struct {
+[s S14 :4 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S14 . . C1OUT C2OUT ]
+"108
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8\pic\include\proc/pic18f4520.h: 108:     struct {
+[s S15 :1 `uc 1 :6 `uc 1 :1 `uc 1 ]
+[n S15 . ULPWUIN . RJPU ]
+"55
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8\pic\include\proc/pic18f4520.h: 55: typedef union {
+[u S6 `S7 1 `S8 1 `S9 1 `S10 1 `S11 1 `S12 1 `S13 1 `S14 1 `S15 1 ]
+[n S6 . . . . . . . . . . ]
+"114
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8\pic\include\proc/pic18f4520.h: 114: extern volatile PORTAbits_t PORTAbits __attribute__((address(0xF80)));
+[v _PORTAbits `VS6 ~T0 @X0 0 e@3968 ]
 [v F205 `(v ~T0 @X0 1 tf1`ul ]
 "20 C:\Program Files\Microchip\xc8\v3.00\pic\include/builtins.h
 [v __delay `JF205 ~T0 @X0 0 e ]
 [p i __delay ]
-"454 C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8\pic\include\proc/pic18f4520.h
-[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8\pic\include\proc/pic18f4520.h: 454:     struct {
-[s S23 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S23 . RC0 RC1 RC2 RC3 RC4 RC5 RC6 RC7 ]
-"464
-[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8\pic\include\proc/pic18f4520.h: 464:     struct {
-[s S24 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S24 . T1OSO T1OSI CCP1 SCK SDI SDO TX RX ]
-"474
-[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8\pic\include\proc/pic18f4520.h: 474:     struct {
-[s S25 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S25 . T13CKI CCP2 . SCL SDA . CK DT ]
-"484
-[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8\pic\include\proc/pic18f4520.h: 484:     struct {
-[s S26 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S26 . T1CKI . P1A ]
-"489
-[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8\pic\include\proc/pic18f4520.h: 489:     struct {
-[s S27 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S27 . . PA2 PA1 ]
-"453
-[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8\pic\include\proc/pic18f4520.h: 453: typedef union {
-[u S22 `S23 1 `S24 1 `S25 1 `S26 1 `S27 1 ]
-[n S22 . . . . . . ]
-"495
-[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8\pic\include\proc/pic18f4520.h: 495: extern volatile PORTCbits_t PORTCbits __attribute__((address(0xF82)));
-[v _PORTCbits `VS22 ~T0 @X0 0 e@3970 ]
-"11 ./dht11.h
-[; ;./dht11.h: 11: typedef struct {
-[s S303 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 ]
-[n S303 . humidity_int humidity_dec temperature_int temperature_dec checksum ]
-"1930 C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8\pic\include\proc/pic18f4520.h
-[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8\pic\include\proc/pic18f4520.h: 1930:     struct {
-[s S72 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S72 . TRISC0 TRISC1 TRISC2 TRISC3 TRISC4 TRISC5 TRISC6 TRISC7 ]
-"1940
-[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8\pic\include\proc/pic18f4520.h: 1940:     struct {
-[s S73 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S73 . RC0 RC1 RC2 RC3 RC4 RC5 RC6 RC7 ]
-"1929
-[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8\pic\include\proc/pic18f4520.h: 1929: typedef union {
-[u S71 `S72 1 `S73 1 ]
-[n S71 . . . ]
-"1951
-[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8\pic\include\proc/pic18f4520.h: 1951: extern volatile TRISCbits_t TRISCbits __attribute__((address(0xF94)));
-[v _TRISCbits `VS71 ~T0 @X0 0 e@3988 ]
+"1486 C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8\pic\include\proc/pic18f4520.h
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8\pic\include\proc/pic18f4520.h: 1486:     struct {
+[s S60 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S60 . TRISA0 TRISA1 TRISA2 TRISA3 TRISA4 TRISA5 TRISA6 TRISA7 ]
+"1496
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8\pic\include\proc/pic18f4520.h: 1496:     struct {
+[s S61 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S61 . RA0 RA1 RA2 RA3 RA4 RA5 RA6 RA7 ]
+"1485
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8\pic\include\proc/pic18f4520.h: 1485: typedef union {
+[u S59 `S60 1 `S61 1 ]
+[n S59 . . . ]
+"1507
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8\pic\include\proc/pic18f4520.h: 1507: extern volatile TRISAbits_t TRISAbits __attribute__((address(0xF92)));
+[v _TRISAbits `VS59 ~T0 @X0 0 e@3986 ]
+"981
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8\pic\include\proc/pic18f4520.h: 981:     struct {
+[s S45 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S45 . LATA0 LATA1 LATA2 LATA3 LATA4 LATA5 LATA6 LATA7 ]
+"991
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8\pic\include\proc/pic18f4520.h: 991:     struct {
+[s S46 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S46 . LA0 LA1 LA2 LA3 LA4 LA5 LA6 LA7 ]
+"980
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8\pic\include\proc/pic18f4520.h: 980: typedef union {
+[u S44 `S45 1 `S46 1 ]
+[n S44 . . . ]
+"1002
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8\pic\include\proc/pic18f4520.h: 1002: extern volatile LATAbits_t LATAbits __attribute__((address(0xF89)));
+[v _LATAbits `VS44 ~T0 @X0 0 e@3977 ]
 "52 C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8\pic\include\proc/pic18f4520.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8\pic\include\proc/pic18f4520.h: 52: __asm("PORTA equ 0F80h");
 [; <" PORTA equ 0F80h ;# ">
@@ -463,332 +490,132 @@ Version 4.0 HI-TECH Software Intermediate Code
 "6999
 [; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8\pic\include\proc/pic18f4520.h: 6999: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
-"7 dht11.c
-[; ;dht11.c: 7: unsigned char DHT11_read_bit(void) {
-[v _DHT11_read_bit `(uc ~T0 @X0 1 ef ]
+"5 dht11.c
+[; ;dht11.c: 5: char DHT11_ReadData(void){
+[v _DHT11_ReadData `(uc ~T0 @X0 1 ef ]
 {
-[e :U _DHT11_read_bit ]
+[e :U _DHT11_ReadData ]
 [f ]
-"8
-[; ;dht11.c: 8:     unsigned char timeout = 0;
-[v _timeout `uc ~T0 @X0 1 a ]
-[e = _timeout -> -> 0 `i `uc ]
-"10
-[; ;dht11.c: 10:     while (PORTCbits.RC0 == 0 && timeout < 100) {
+"6
+[; ;dht11.c: 6:   char i,data = 0;
+[v _i `uc ~T0 @X0 1 a ]
+[v _data `uc ~T0 @X0 1 a ]
+[e = _data -> -> 0 `i `uc ]
+"7
+[; ;dht11.c: 7:     for(i=0;i<8;i++)
+{
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 8 `i 304  ]
 [e $U 305  ]
-[e :U 306 ]
+[e :U 304 ]
+"8
+[; ;dht11.c: 8:     {
 {
-"11
-[; ;dht11.c: 11:         _delay((unsigned long)((1)*(8000000/4000000.0)));
-[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 8000000 `l `d .4000000.0 `ul ]
-"12
-[; ;dht11.c: 12:         timeout++;
-[e ++ _timeout -> -> 1 `i `uc ]
-"13
-[; ;dht11.c: 13:     }
-}
-[e :U 305 ]
-"10
-[; ;dht11.c: 10:     while (PORTCbits.RC0 == 0 && timeout < 100) {
-[e $ && == -> . . _PORTCbits 0 0 `i -> 0 `i < -> _timeout `i -> 100 `i 306  ]
-[e :U 307 ]
-"14
-[; ;dht11.c: 14:     timeout = 0;
-[e = _timeout -> -> 0 `i `uc ]
-"16
-[; ;dht11.c: 16:     while (PORTCbits.RC0 == 1 && timeout < 100) {
-[e $U 308  ]
-[e :U 309 ]
-{
-"17
-[; ;dht11.c: 17:         _delay((unsigned long)((1)*(8000000/4000000.0)));
-[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 8000000 `l `d .4000000.0 `ul ]
-"18
-[; ;dht11.c: 18:         timeout++;
-[e ++ _timeout -> -> 1 `i `uc ]
-"19
-[; ;dht11.c: 19:     }
-}
+"9
+[; ;dht11.c: 9:         while(!(PORTAbits.RA4 & 1));
+[e $U 307  ]
 [e :U 308 ]
-"16
-[; ;dht11.c: 16:     while (PORTCbits.RC0 == 1 && timeout < 100) {
-[e $ && == -> . . _PORTCbits 0 0 `i -> 1 `i < -> _timeout `i -> 100 `i 309  ]
+[e :U 307 ]
+[e $ ! != & -> . . _PORTAbits 0 4 `i -> 1 `i -> 0 `i 308  ]
+[e :U 309 ]
+"10
+[; ;dht11.c: 10:         _delay((unsigned long)((30)*(8000000/4000000.0)));
+[e ( __delay (1 -> * -> -> 30 `i `d / -> -> 8000000 `l `d .4000000.0 `ul ]
+"11
+[; ;dht11.c: 11:         if(PORTAbits.RA4 & 1)
+[e $ ! != & -> . . _PORTAbits 0 4 `i -> 1 `i -> 0 `i 310  ]
+"12
+[; ;dht11.c: 12:           data = (char)(((data)<<1) | 1);
+[e = _data -> | << -> _data `i -> 1 `i -> 1 `i `uc ]
+[e $U 311  ]
+"13
+[; ;dht11.c: 13:         else
 [e :U 310 ]
-"21
-[; ;dht11.c: 21:     _delay((unsigned long)((40)*(8000000/4000000.0)));
-[e ( __delay (1 -> * -> -> 40 `i `d / -> -> 8000000 `l `d .4000000.0 `ul ]
-"22
-[; ;dht11.c: 22:     if (PORTCbits.RC0 == 1) {
-[e $ ! == -> . . _PORTCbits 0 0 `i -> 1 `i 311  ]
-{
-"24
-[; ;dht11.c: 24:         timeout = 0;
-[e = _timeout -> -> 0 `i `uc ]
-"25
-[; ;dht11.c: 25:         while (PORTCbits.RC0 == 1 && timeout < 100) {
+"14
+[; ;dht11.c: 14:           data = (char)((data)<<1);
+[e = _data -> << -> _data `i -> 1 `i `uc ]
+[e :U 311 ]
+"15
+[; ;dht11.c: 15:         while(PORTAbits.RA4 & 1);
 [e $U 312  ]
 [e :U 313 ]
-{
-"26
-[; ;dht11.c: 26:             _delay((unsigned long)((1)*(8000000/4000000.0)));
-[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 8000000 `l `d .4000000.0 `ul ]
-"27
-[; ;dht11.c: 27:             timeout++;
-[e ++ _timeout -> -> 1 `i `uc ]
-"28
-[; ;dht11.c: 28:         }
-}
 [e :U 312 ]
-"25
-[; ;dht11.c: 25:         while (PORTCbits.RC0 == 1 && timeout < 100) {
-[e $ && == -> . . _PORTCbits 0 0 `i -> 1 `i < -> _timeout `i -> 100 `i 313  ]
+[e $ != & -> . . _PORTAbits 0 4 `i -> 1 `i -> 0 `i 313  ]
 [e :U 314 ]
-"29
-[; ;dht11.c: 29:         return 1;
-[e ) -> -> 1 `i `uc ]
-[e $UE 304  ]
-"30
-[; ;dht11.c: 30:     } else {
-}
-[e $U 315  ]
-[e :U 311 ]
-{
-"31
-[; ;dht11.c: 31:         return 0;
-[e ) -> -> 0 `i `uc ]
-[e $UE 304  ]
-"32
-[; ;dht11.c: 32:     }
-}
-[e :U 315 ]
-"33
-[; ;dht11.c: 33: }
-[e :UE 304 ]
-}
-"36
-[; ;dht11.c: 36: unsigned char DHT11_read_byte(void) {
-[v _DHT11_read_byte `(uc ~T0 @X0 1 ef ]
-{
-[e :U _DHT11_read_byte ]
-[f ]
-"37
-[; ;dht11.c: 37:     unsigned char i, byte = 0;
-[v _i `uc ~T0 @X0 1 a ]
-[v _byte `uc ~T0 @X0 1 a ]
-[e = _byte -> -> 0 `i `uc ]
-"38
-[; ;dht11.c: 38:     for (i = 0; i < 8; i++) {
-{
-[e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 8 `i 317  ]
-[e $U 318  ]
-[e :U 317 ]
-{
-"39
-[; ;dht11.c: 39:         if (DHT11_read_bit()) {
-[e $ ! != -> ( _DHT11_read_bit ..  `i -> 0 `i 320  ]
-{
-"40
-[; ;dht11.c: 40:             byte |= (1 << (7 - i));
-[e =| _byte -> << -> 1 `i - -> 7 `i -> _i `i `uc ]
-"41
-[; ;dht11.c: 41:         }
-}
-[e :U 320 ]
-"42
-[; ;dht11.c: 42:     }
+"16
+[; ;dht11.c: 16:     }
 }
 [e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 8 `i 317  ]
-[e :U 318 ]
+[e $ < -> _i `i -> 8 `i 304  ]
+[e :U 305 ]
 }
-"43
-[; ;dht11.c: 43:     return byte;
-[e ) _byte ]
-[e $UE 316  ]
-"44
-[; ;dht11.c: 44: }
-[e :UE 316 ]
+"17
+[; ;dht11.c: 17:   return data;
+[e ) _data ]
+[e $UE 303  ]
+"18
+[; ;dht11.c: 18: }
+[e :UE 303 ]
 }
-"47
-[; ;dht11.c: 47: unsigned char DHT11_read(DHT11_Data *data) {
-[v _DHT11_read `(uc ~T0 @X0 1 ef1`*S303 ]
+"20
+[; ;dht11.c: 20: void DHT11_CheckResponse(void){
+[v _DHT11_CheckResponse `(v ~T0 @X0 1 ef ]
 {
-[e :U _DHT11_read ]
-[v _data `*S303 ~T0 @X0 1 r1 ]
+[e :U _DHT11_CheckResponse ]
 [f ]
-"48
-[; ;dht11.c: 48:     unsigned char timeout = 0;
-[v _timeout `uc ~T0 @X0 1 a ]
-[e = _timeout -> -> 0 `i `uc ]
-"49
-[; ;dht11.c: 49:     unsigned char buffer[5];
-[v _buffer `uc ~T0 @X0 -> 5 `i a ]
-"50
-[; ;dht11.c: 50:     unsigned char checksum;
-[v _checksum `uc ~T0 @X0 1 a ]
-"53
-[; ;dht11.c: 53:     TRISCbits.TRISC0 = 0;
-[e = . . _TRISCbits 0 0 -> -> 0 `i `uc ]
-"54
-[; ;dht11.c: 54:     PORTCbits.RC0 = 0;
-[e = . . _PORTCbits 0 0 -> -> 0 `i `uc ]
-"55
-[; ;dht11.c: 55:     _delay((unsigned long)((18)*(8000000/4000.0)));
-[e ( __delay (1 -> * -> -> 18 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-"56
-[; ;dht11.c: 56:     PORTCbits.RC0 = 1;
-[e = . . _PORTCbits 0 0 -> -> 1 `i `uc ]
-"57
-[; ;dht11.c: 57:     _delay((unsigned long)((30)*(8000000/4000000.0)));
-[e ( __delay (1 -> * -> -> 30 `i `d / -> -> 8000000 `l `d .4000000.0 `ul ]
-"58
-[; ;dht11.c: 58:     TRISCbits.TRISC0 = 1;
-[e = . . _TRISCbits 0 0 -> -> 1 `i `uc ]
-"62
-[; ;dht11.c: 62:     timeout = 0;
-[e = _timeout -> -> 0 `i `uc ]
-"63
-[; ;dht11.c: 63:     while (PORTCbits.RC0 == 1 && timeout < 100) {
+"21
+[; ;dht11.c: 21:     while(PORTAbits.RA4 & 1);
+[e $U 316  ]
+[e :U 317 ]
+[e :U 316 ]
+[e $ != & -> . . _PORTAbits 0 4 `i -> 1 `i -> 0 `i 317  ]
+[e :U 318 ]
+"22
+[; ;dht11.c: 22:     while(!(PORTAbits.RA4 & 1));
+[e $U 319  ]
+[e :U 320 ]
+[e :U 319 ]
+[e $ ! != & -> . . _PORTAbits 0 4 `i -> 1 `i -> 0 `i 320  ]
+[e :U 321 ]
+"23
+[; ;dht11.c: 23:     while(PORTAbits.RA4 & 1);
 [e $U 322  ]
 [e :U 323 ]
-{
-"64
-[; ;dht11.c: 64:         _delay((unsigned long)((1)*(8000000/4000000.0)));
-[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 8000000 `l `d .4000000.0 `ul ]
-"65
-[; ;dht11.c: 65:         timeout++;
-[e ++ _timeout -> -> 1 `i `uc ]
-"66
-[; ;dht11.c: 66:     }
-}
 [e :U 322 ]
-"63
-[; ;dht11.c: 63:     while (PORTCbits.RC0 == 1 && timeout < 100) {
-[e $ && == -> . . _PORTCbits 0 0 `i -> 1 `i < -> _timeout `i -> 100 `i 323  ]
+[e $ != & -> . . _PORTAbits 0 4 `i -> 1 `i -> 0 `i 323  ]
 [e :U 324 ]
-"67
-[; ;dht11.c: 67:     if (timeout >= 100) return 0;
-[e $ ! >= -> _timeout `i -> 100 `i 325  ]
-[e ) -> -> 0 `i `uc ]
-[e $UE 321  ]
-[e :U 325 ]
-"70
-[; ;dht11.c: 70:     timeout = 0;
-[e = _timeout -> -> 0 `i `uc ]
-"71
-[; ;dht11.c: 71:     while (PORTCbits.RC0 == 0 && timeout < 100) {
-[e $U 326  ]
-[e :U 327 ]
-{
-"72
-[; ;dht11.c: 72:         _delay((unsigned long)((1)*(8000000/4000000.0)));
-[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 8000000 `l `d .4000000.0 `ul ]
-"73
-[; ;dht11.c: 73:         timeout++;
-[e ++ _timeout -> -> 1 `i `uc ]
-"74
-[; ;dht11.c: 74:     }
+"24
+[; ;dht11.c: 24: }
+[e :UE 315 ]
 }
-[e :U 326 ]
-"71
-[; ;dht11.c: 71:     while (PORTCbits.RC0 == 0 && timeout < 100) {
-[e $ && == -> . . _PORTCbits 0 0 `i -> 0 `i < -> _timeout `i -> 100 `i 327  ]
-[e :U 328 ]
-"75
-[; ;dht11.c: 75:     if (timeout >= 100) return 0;
-[e $ ! >= -> _timeout `i -> 100 `i 329  ]
-[e ) -> -> 0 `i `uc ]
-[e $UE 321  ]
-[e :U 329 ]
-"78
-[; ;dht11.c: 78:     timeout = 0;
-[e = _timeout -> -> 0 `i `uc ]
-"79
-[; ;dht11.c: 79:     while (PORTCbits.RC0 == 1 && timeout < 100) {
-[e $U 330  ]
-[e :U 331 ]
+"26
+[; ;dht11.c: 26: void DHT11_Init(void){
+[v _DHT11_Init `(v ~T0 @X0 1 ef ]
 {
-"80
-[; ;dht11.c: 80:         _delay((unsigned long)((1)*(8000000/4000000.0)));
-[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 8000000 `l `d .4000000.0 `ul ]
-"81
-[; ;dht11.c: 81:         timeout++;
-[e ++ _timeout -> -> 1 `i `uc ]
-"82
-[; ;dht11.c: 82:     }
-}
-[e :U 330 ]
-"79
-[; ;dht11.c: 79:     while (PORTCbits.RC0 == 1 && timeout < 100) {
-[e $ && == -> . . _PORTCbits 0 0 `i -> 1 `i < -> _timeout `i -> 100 `i 331  ]
-[e :U 332 ]
-"83
-[; ;dht11.c: 83:     if (timeout >= 100) return 0;
-[e $ ! >= -> _timeout `i -> 100 `i 333  ]
-[e ) -> -> 0 `i `uc ]
-[e $UE 321  ]
-[e :U 333 ]
-"86
-[; ;dht11.c: 86:     for (unsigned char i = 0; i < 5; i++) {
-{
-[v _i `uc ~T0 @X0 1 a ]
-[e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 5 `i 334  ]
-[e $U 335  ]
-[e :U 334 ]
-{
-"87
-[; ;dht11.c: 87:         buffer[i] = DHT11_read_byte();
-[e = *U + &U _buffer * -> _i `ux -> -> # *U &U _buffer `ui `ux ( _DHT11_read_byte ..  ]
-"88
-[; ;dht11.c: 88:     }
-}
-[e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 5 `i 334  ]
-[e :U 335 ]
-}
-"91
-[; ;dht11.c: 91:     checksum = buffer[0] + buffer[1] + buffer[2] + buffer[3];
-[e = _checksum -> + + + -> *U + &U _buffer * -> -> -> 0 `i `ui `ux -> -> # *U &U _buffer `ui `ux `i -> *U + &U _buffer * -> -> -> 1 `i `ui `ux -> -> # *U &U _buffer `ui `ux `i -> *U + &U _buffer * -> -> -> 2 `i `ui `ux -> -> # *U &U _buffer `ui `ux `i -> *U + &U _buffer * -> -> -> 3 `i `ui `ux -> -> # *U &U _buffer `ui `ux `i `uc ]
-"92
-[; ;dht11.c: 92:     if (checksum == buffer[4]) {
-[e $ ! == -> _checksum `i -> *U + &U _buffer * -> -> -> 4 `i `ui `ux -> -> # *U &U _buffer `ui `ux `i 337  ]
-{
-"93
-[; ;dht11.c: 93:         data->humidity_int = buffer[0];
-[e = . *U _data 0 *U + &U _buffer * -> -> -> 0 `i `ui `ux -> -> # *U &U _buffer `ui `ux ]
-"94
-[; ;dht11.c: 94:         data->humidity_dec = buffer[1];
-[e = . *U _data 1 *U + &U _buffer * -> -> -> 1 `i `ui `ux -> -> # *U &U _buffer `ui `ux ]
-"95
-[; ;dht11.c: 95:         data->temperature_int = buffer[2];
-[e = . *U _data 2 *U + &U _buffer * -> -> -> 2 `i `ui `ux -> -> # *U &U _buffer `ui `ux ]
-"96
-[; ;dht11.c: 96:         data->temperature_dec = buffer[3];
-[e = . *U _data 3 *U + &U _buffer * -> -> -> 3 `i `ui `ux -> -> # *U &U _buffer `ui `ux ]
-"97
-[; ;dht11.c: 97:         data->checksum = buffer[4];
-[e = . *U _data 4 *U + &U _buffer * -> -> -> 4 `i `ui `ux -> -> # *U &U _buffer `ui `ux ]
-"98
-[; ;dht11.c: 98:         return 1;
-[e ) -> -> 1 `i `uc ]
-[e $UE 321  ]
-"99
-[; ;dht11.c: 99:     } else {
-}
-[e $U 338  ]
-[e :U 337 ]
-{
-"100
-[; ;dht11.c: 100:         return 0;
-[e ) -> -> 0 `i `uc ]
-[e $UE 321  ]
-"101
-[; ;dht11.c: 101:     }
-}
-[e :U 338 ]
-"102
-[; ;dht11.c: 102: }
-[e :UE 321 ]
+[e :U _DHT11_Init ]
+[f ]
+"27
+[; ;dht11.c: 27:     TRISAbits.RA4 = 0;
+[e = . . _TRISAbits 1 4 -> -> 0 `i `uc ]
+"28
+[; ;dht11.c: 28:     LATAbits.LATA4 = 0;
+[e = . . _LATAbits 0 4 -> -> 0 `i `uc ]
+"29
+[; ;dht11.c: 29:     _delay((unsigned long)((18)*(8000000/4000.0)));
+[e ( __delay (1 -> * -> -> 18 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+"30
+[; ;dht11.c: 30:     LATAbits.LATA4 = 1;
+[e = . . _LATAbits 0 4 -> -> 1 `i `uc ]
+"31
+[; ;dht11.c: 31:     _delay((unsigned long)((20)*(8000000/4000000.0)));
+[e ( __delay (1 -> * -> -> 20 `i `d / -> -> 8000000 `l `d .4000000.0 `ul ]
+"32
+[; ;dht11.c: 32:     TRISAbits.RA4 = 1;
+[e = . . _TRISAbits 1 4 -> -> 1 `i `uc ]
+"33
+[; ;dht11.c: 33:     DHT11_CheckResponse();
+[e ( _DHT11_CheckResponse ..  ]
+"34
+[; ;dht11.c: 34: }
+[e :UE 325 ]
 }

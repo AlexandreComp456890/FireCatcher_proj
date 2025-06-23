@@ -1,0 +1,4 @@
+# Ignorando pastas de logs e projetos privados
+/queuelogs
+/nbproject
+/.vscode

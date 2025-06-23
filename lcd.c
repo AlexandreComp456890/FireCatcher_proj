@@ -3,8 +3,8 @@
 #define _XTAL_FREQ 8000000
 
 // Define LCD control pins
-#define RS PORTDbits.RD7
-#define EN PORTDbits.RD1
+#define RS PORTDbits.RD1
+#define EN PORTDbits.RD7
 
 void lcd_enable() {
     EN = 1;
@@ -15,7 +15,7 @@ void lcd_enable() {
 
 void lcd_cmd(unsigned char cmd) {
     RS = 0;
-    PORTB = cmd;     // Full 8 bits to PORTC
+    PORTB = cmd;     // Full 8 bits to PORTB
     lcd_enable();
 }
 
@@ -27,8 +27,8 @@ void lcd_data(unsigned char data) {
 
 void lcd_init(void) {
     TRISB = 0x00;  // All PORTC as output (D0?D7)
-    TRISD7 = 0;    // RS
-    TRISD1 = 0;    // EN
+    TRISD1 = 0;    // RS
+    TRISD7 = 0;    // EN
 
     __delay_ms(20);    // Wait for LCD to power up
     lcd_cmd(0x38);     // 8-bit mode, 2 lines, 5x8 font

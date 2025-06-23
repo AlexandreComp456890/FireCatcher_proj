@@ -4797,8 +4797,6 @@ unsigned char __t3rd16on(void);
 
 
 void lcd_init(void);
-void lcd_cmd(unsigned char);
-void lcd_data(unsigned char);
 void lcd_string(const char*);
 void lcd_set_cursor(unsigned char row, unsigned char col);
 void lcd_clear(void);
@@ -4810,28 +4808,28 @@ void lcd_clear(void);
 
 
 void lcd_enable() {
-    PORTDbits.RD1 = 1;
+    PORTDbits.RD7 = 1;
     _delay((unsigned long)((1)*(8000000/4000000.0)));
-    PORTDbits.RD1 = 0;
+    PORTDbits.RD7 = 0;
     _delay((unsigned long)((2)*(8000000/4000.0)));
 }
 
 void lcd_cmd(unsigned char cmd) {
-    PORTDbits.RD7 = 0;
+    PORTDbits.RD1 = 0;
     PORTB = cmd;
     lcd_enable();
 }
 
 void lcd_data(unsigned char data) {
-    PORTDbits.RD7 = 1;
+    PORTDbits.RD1 = 1;
     PORTB = data;
     lcd_enable();
 }
 
 void lcd_init(void) {
     TRISB = 0x00;
-    TRISD7 = 0;
     TRISD1 = 0;
+    TRISD7 = 0;
 
     _delay((unsigned long)((20)*(8000000/4000.0)));
     lcd_cmd(0x38);

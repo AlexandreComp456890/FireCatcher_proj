@@ -32,12 +32,12 @@ Version 4.0 HI-TECH Software Intermediate Code
 "1697
 [; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8\pic\include\proc/pic18f4520.h: 1697: extern volatile unsigned char TRISB __attribute__((address(0xF93)));
 [v _TRISB `Vuc ~T0 @X0 0 e@3987 ]
-"8832
-[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8\pic\include\proc/pic18f4520.h: 8832: extern volatile __bit TRISD7 __attribute__((address(0x7CAF)));
-[v _TRISD7 `Vb ~T0 @X0 0 e@31919 ]
 "8814
 [; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8\pic\include\proc/pic18f4520.h: 8814: extern volatile __bit TRISD1 __attribute__((address(0x7CA9)));
 [v _TRISD1 `Vb ~T0 @X0 0 e@31913 ]
+"8832
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8\pic\include\proc/pic18f4520.h: 8832: extern volatile __bit TRISD7 __attribute__((address(0x7CAF)));
+[v _TRISD7 `Vb ~T0 @X0 0 e@31919 ]
 "52 C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8\pic\include\proc/pic18f4520.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8\pic\include\proc/pic18f4520.h: 52: __asm("PORTA equ 0F80h");
 [; <" PORTA equ 0F80h ;# ">
@@ -459,14 +459,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U _lcd_enable ]
 [f ]
 "10
-[; ;lcd.c: 10:     PORTDbits.RD1 = 1;
-[e = . . _PORTDbits 0 1 -> -> 1 `i `uc ]
+[; ;lcd.c: 10:     PORTDbits.RD7 = 1;
+[e = . . _PORTDbits 0 7 -> -> 1 `i `uc ]
 "11
 [; ;lcd.c: 11:     _delay((unsigned long)((1)*(8000000/4000000.0)));
 [e ( __delay (1 -> * -> -> 1 `i `d / -> -> 8000000 `l `d .4000000.0 `ul ]
 "12
-[; ;lcd.c: 12:     PORTDbits.RD1 = 0;
-[e = . . _PORTDbits 0 1 -> -> 0 `i `uc ]
+[; ;lcd.c: 12:     PORTDbits.RD7 = 0;
+[e = . . _PORTDbits 0 7 -> -> 0 `i `uc ]
 "13
 [; ;lcd.c: 13:     _delay((unsigned long)((2)*(8000000/4000.0)));
 [e ( __delay (1 -> * -> -> 2 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
@@ -482,8 +482,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _cmd `uc ~T0 @X0 1 r1 ]
 [f ]
 "17
-[; ;lcd.c: 17:     PORTDbits.RD7 = 0;
-[e = . . _PORTDbits 0 7 -> -> 0 `i `uc ]
+[; ;lcd.c: 17:     PORTDbits.RD1 = 0;
+[e = . . _PORTDbits 0 1 -> -> 0 `i `uc ]
 "18
 [; ;lcd.c: 18:     PORTB = cmd;
 [e = _PORTB _cmd ]
@@ -502,8 +502,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _data `uc ~T0 @X0 1 r1 ]
 [f ]
 "23
-[; ;lcd.c: 23:     PORTDbits.RD7 = 1;
-[e = . . _PORTDbits 0 7 -> -> 1 `i `uc ]
+[; ;lcd.c: 23:     PORTDbits.RD1 = 1;
+[e = . . _PORTDbits 0 1 -> -> 1 `i `uc ]
 "24
 [; ;lcd.c: 24:     PORTB = data;
 [e = _PORTB _data ]
@@ -524,11 +524,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;lcd.c: 29:     TRISB = 0x00;
 [e = _TRISB -> -> 0 `i `uc ]
 "30
-[; ;lcd.c: 30:     TRISD7 = 0;
-[e = _TRISD7 -> -> 0 `i `b ]
-"31
-[; ;lcd.c: 31:     TRISD1 = 0;
+[; ;lcd.c: 30:     TRISD1 = 0;
 [e = _TRISD1 -> -> 0 `i `b ]
+"31
+[; ;lcd.c: 31:     TRISD7 = 0;
+[e = _TRISD7 -> -> 0 `i `b ]
 "33
 [; ;lcd.c: 33:     _delay((unsigned long)((20)*(8000000/4000.0)));
 [e ( __delay (1 -> * -> -> 20 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
@@ -575,8 +575,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _row `uc ~T0 @X0 1 r1 ]
 [v _col `uc ~T0 @X0 1 r2 ]
 [f ]
-[v F2720 `uc ~T0 @X0 -> 2 `i s ]
-[i F2720
+[v F2716 `uc ~T0 @X0 -> 2 `i s ]
+[i F2716
 :U ..
 "45
 [; ;lcd.c: 45:     unsigned char positions[] = {0x80, 0xC0};
@@ -585,7 +585,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ]
 [v _positions `uc ~T0 @X0 -> 2 `i a ]
-[e = _positions F2720 ]
+[e = _positions F2716 ]
 "46
 [; ;lcd.c: 46:     lcd_cmd(positions[row] + col);
 [e ( _lcd_cmd (1 -> + -> *U + &U _positions * -> _row `ux -> -> # *U &U _positions `ui `ux `i -> _col `i `uc ]
